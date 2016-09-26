@@ -465,6 +465,10 @@ class UnionType(Type):
         assert item_types
         super(UnionType, self).__init__(None)
 
+    def parse_xmlelement(self, xmlelement, schema=None, allow_none=True,
+                         context=None):
+        return xmlelement.text
+
     def resolve(self):
         self.item_types = [item.resolve() for item in self.item_types]
         self.base_class = self.item_types[0].__class__
