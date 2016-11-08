@@ -38,6 +38,17 @@ def test_parse_response():
                     <element minOccurs="0" maxOccurs="1" name="ZeepExampleResult" type="tns:ZeepExampleResult" />
                   </sequence>
                 </complexType>
+                <complexType name="DecodedCharacteristics">
+                    <sequence>
+                      <choice minOccurs="0">
+                        <element maxOccurs="999" minOccurs="0" name="characteristic"/>
+                        <sequence>
+                          <element minOccurs="0" name="CSC13"/>
+                          <any maxOccurs="unbounded" minOccurs="0"/>
+                        </sequence>
+                      </choice>
+                    </sequence>
+                </complexType>
               </element>
             </schema>
           </wsdl:types>
@@ -65,6 +76,9 @@ def test_parse_response():
                   </Item>
                 </Results>
               </ZeepExampleResult>
+              <decodedCharacteristics>
+                <CSC13>M</CSC13>
+              </decodedCharacteristics>
             </ZeepExampleResponse>
           </soap:Body>
         </soap:Envelope>
